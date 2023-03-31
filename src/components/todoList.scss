@@ -1,0 +1,159 @@
+@use "../styles/variables" as *;
+
+.todo__list {
+  margin-top: 1rem;
+  background-color: hsl(var(--Neutral-200));
+  border-radius: 0.3rem;
+
+  > * + * {
+    border-top: 1px solid hsl(var(--Neutral-400) / 0.4);
+  }
+
+  &--item {
+    display: flex;
+    align-items: center;
+    padding-left: 0.2em;
+    padding-right: 1em;
+    cursor: grab;
+
+    &:hover .todo-label::before {
+      border: solid rem(2) transparent;
+
+      background-image: linear-gradient(hsl(var(--Neutral-200)), hsl(var(--Neutral-200))), linear-gradient(#57ddff, #c058f3);
+      //   background-image: linear-gradient(red, green), linear-gradient(blue, green);
+    }
+
+    &:hover .delete-todo-btn {
+      opacity: 1;
+    }
+
+    .todo-check {
+      //   background-color: red;
+      visibility: hidden;
+      width: 0;
+      height: 0;
+
+      &:checked + .todo-label {
+        text-decoration: line-through;
+        color: hsl(var(--Neutral-400) / 0.5);
+      }
+      &:checked + .todo-label::after {
+        opacity: 1;
+      }
+
+      &:checked + .todo-label::before {
+        border-color: transparent;
+        background-image: var(--Primary-200), var(--Primary-200);
+      }
+    }
+
+    .todo-label {
+      cursor: pointer;
+      padding-block: 1em;
+      //   background-color: red;
+      color: var(--todo-text);
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      position: relative;
+
+      &::before {
+        content: "";
+        display: inline-block;
+        position: relative;
+        // background-image: transparent;
+        background-origin: border-box;
+        background-clip: content-box, border-box;
+        border: 2px solid hsl(var(--Neutral-600));
+
+        aspect-ratio: 1/ 1;
+        min-width: 1.5rem;
+        border-radius: 50%;
+      }
+
+      &::after {
+        content: "";
+        width: rem(6);
+        height: rem(10);
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        // transform: rotate(45deg);
+        position: absolute;
+        left: rem(12);
+        top: 50%;
+        transform: translate(-50%, -60%) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    .delete-todo-btn {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      margin-left: 1rem;
+      opacity: 0;
+    }
+  }
+
+  .more-info {
+    // outline: 1px solid red;
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.7rem;
+
+    .items-left {
+      color: hsl(var(--Neutral-400));
+    }
+
+    .clear-btn {
+      background-color: transparent;
+      border: none;
+      color: hsl(var(--Neutral-400));
+      cursor: pointer;
+    }
+  }
+}
+
+.tab__list {
+  padding: 0.5rem 1rem;
+  //   outline: 1px solid red;
+  font-size: 0.7rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+
+  &.mobile-tab {
+    margin-top: 1rem;
+    border-radius: 0.3rem;
+    background-color: hsl(var(--Neutral-200));
+
+    @include breakpoint(medium) {
+      display: none;
+    }
+  }
+
+  &.desktop-tab {
+    display: none;
+
+    @include breakpoint(medium) {
+      display: block;
+    }
+  }
+
+  &--item {
+    background-color: transparent;
+    border: none;
+    font-weight: 900;
+    color: hsl(var(--Neutral-400));
+    cursor: pointer;
+
+    &[data-active-tab] {
+      color: hsl(var(--Primary-100));
+    }
+  }
+}

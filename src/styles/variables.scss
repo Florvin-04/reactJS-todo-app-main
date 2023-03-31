@@ -1,0 +1,57 @@
+@use "sass:math";
+
+// $font-100: "Barlow", sans-serif;
+// $font-200: "Josefin Sans", sans-serif;
+
+:root {
+  --Primary-100: 220 98% 61%;
+  --Primary-200: linear-gradient(hsl(192 100% 67%), hsl(280 87% 65%));
+
+  //dark theme
+  --Neutral-100: 235 21% 11%;
+  --Neutral-200: 235 24% 19%;
+  --Neutral-300: 234 39% 85%;
+  --Neutral-hover: 236 33% 92%;
+  --Neutral-400: 234 11% 52%;
+  --Neutral-500: 233 14% 35%;
+  --Neutral-600: 237 14% 26%;
+
+  --todo-text: hsl(var(--Neutral-300));
+
+  --draggable-style: 235 19% 35%;
+
+  // font-family: 'Barlow', sans-serif;
+  // font-family: 'Josefin Sans', sans-serif;
+}
+
+body.light-theme {
+  //   light theme
+  --Neutral-100: 0 0% 98%;
+  --Neutral-200: 236 33% 92%;
+  --Neutral-300: 233 11% 84%;
+  --Neutral-400: 236 9% 61%;
+  --Neutral-500: 235 19% 35%;
+
+  --todo-text: hsl(var(--Neutral-500));
+
+  --draggable-style: 234 39% 85%;
+}
+
+// Source: https://css-tricks.com/snippets/sass/px-to-em-functions/
+@function rem($pixels, $context: 16) {
+  @return (math.div($pixels, $context)) * 1rem;
+}
+
+// mobile first
+// 768  px, 1024px, 1400px
+$breakpoints-up: (
+  "medium": "25em",
+  "large": "64em",
+  "xlarge": "87.5em",
+);
+
+@mixin breakpoint($size) {
+  @media (min-width: map-get($breakpoints-up, $size)) {
+    @content;
+  }
+}

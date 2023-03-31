@@ -1,0 +1,59 @@
+@use "../styles/variables" as *;
+
+.input-todo__container {
+  //   outline: 1px solid red;
+  //   border: 0.3rem;
+  margin-top: 1.5rem;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    // background-color: red;
+    z-index: 10;
+    border: 2px solid hsl(var(--Neutral-600));
+    aspect-ratio: 1/ 1;
+    width: 1.5rem;
+    border-radius: 50%;
+    top: 50%;
+    left: 1rem;
+    transform: translate(0, -50%);
+  }
+
+  .todo-form {
+    // outline: 2px solid red;
+    position: relative;
+
+    .todo-input {
+      border-radius: 0.3rem;
+      width: 100%;
+      padding: 0.9em 1em;
+      padding-left: 3rem;
+      border: none;
+      position: relative;
+      background-color: hsl(var(--Neutral-200));
+      color: var(--todo-text);
+
+      overflow-x: hidden;
+
+      &:focus + .todo-label,
+      &:not(:placeholder-shown) + .todo-label {
+        top: -10%;
+        left: 2rem;
+        transform: scale(0.8);
+      }
+    }
+
+    .todo-label {
+      //   outline: 1px solid red;
+      position: absolute;
+      color: hsl(var(--Neutral-400));
+      top: 50%;
+      left: 3rem;
+      transform: translate(0, -50%);
+      //   transition: top 0.1s ease-in;
+      transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+    }
+  }
+}

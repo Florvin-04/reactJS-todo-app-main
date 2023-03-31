@@ -1,0 +1,42 @@
+@use "./styles/variables" as *;
+
+.App {
+  min-height: 100vh;
+  background-color: hsl(var(--Neutral-100));
+
+  .header {
+    height: 15rem;
+    background-image: url(../images/bg-mobile-dark.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  main {
+    position: relative;
+    top: -11.5rem;
+
+    width: min(90%, rem(1440));
+    margin-inline: auto;
+
+    .title__wrapper {
+      // outline: 1px solid red;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .todo-txt {
+        margin: 0;
+        padding: 0;
+        letter-spacing: 0.6rem;
+        color: hsl(0, 0%, 100%);
+      }
+
+      .toggle-btn {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+}
