@@ -4,11 +4,35 @@
   min-height: 100vh;
   background-color: hsl(var(--Neutral-100));
 
+  &.light-theme {
+    --Neutral-100: 0 0% 98%;
+    --Neutral-200: 236 33% 92%;
+    --Neutral-300: 233 11% 84%;
+    --Neutral-400: 236 9% 61%;
+    --Neutral-500: 235 19% 35%;
+
+    --todo-text: hsl(var(--Neutral-500));
+
+    --draggable-style: 234 39% 85%;
+  }
+
   .header {
     height: 15rem;
     background-image: url(../images/bg-mobile-dark.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+
+    @include breakpoint(medium) {
+      background-image: url(../images/bg-desktop-dark.jpg);
+    }
+
+    &.light-theme-header {
+      background-image: url(../images/bg-mobile-light.jpg);
+
+      @include breakpoint(medium) {
+        background-image: url(../images/bg-desktop-light.jpg);
+      }
+    }
   }
 
   main {

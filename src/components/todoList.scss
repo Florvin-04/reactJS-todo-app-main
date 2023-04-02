@@ -27,6 +27,13 @@
       opacity: 1;
     }
 
+    &.dragging {
+      background-color: hsl(var(--Neutral-500));
+    }
+    &.dragenter {
+      background-color: hsl(var(--Neutral-500));
+    }
+
     .todo-check {
       //   background-color: red;
       visibility: hidden;
@@ -50,13 +57,14 @@
     .todo-label {
       cursor: pointer;
       padding-block: 1em;
-      //   background-color: red;
       color: var(--todo-text);
       width: 100%;
       display: flex;
       align-items: center;
       gap: 0.7rem;
       position: relative;
+      overflow-wrap: break-word;
+      overflow-wrap: anywhere;
 
       &::before {
         content: "";
@@ -65,7 +73,7 @@
         // background-image: transparent;
         background-origin: border-box;
         background-clip: content-box, border-box;
-        border: 2px solid hsl(var(--Neutral-600));
+        border: 2px solid hsl(var(--Neutral-400) / 0.4);
 
         aspect-ratio: 1/ 1;
         min-width: 1.5rem;
@@ -152,7 +160,7 @@
     color: hsl(var(--Neutral-400));
     cursor: pointer;
 
-    &[data-active-tab] {
+    &[data-active-tab="true"] {
       color: hsl(var(--Primary-100));
     }
   }
